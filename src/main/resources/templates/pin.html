@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bankomat</title>
+</head>
+<body>
+    <form action="#" th:object="${card}" th:action="@{/operations}" method="post">
+        <table border="1">
+            <tr>
+                <td><span>Введите пин-код для карты</span> </td>
+                <td><span th:text="${card.number}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Pin-code"/></td>
+                <td><input type="text" th:name="pin" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

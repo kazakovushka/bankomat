@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-test-card
+      author: kazakovushka
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  valueComputed: RANDOM_UUID()
+              - column:
+                  name: number
+                  value: '1234123412341234'
+              - column:
+                  name: pin
+                  value: '1234'
+            tableName: card
+

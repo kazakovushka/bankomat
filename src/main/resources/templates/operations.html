@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bankomat</title>
+</head>
+<body>
+   <form action="#"  th:object="${card}"  method="post" th:action="@{/operation}">
+       <span >Выберите операцию</span>
+       <button type="submit" name="action" value="balance">посмотреть баланс</button>
+        <button type="submit" name="action" value="takeMoney">снятие наличных</button>
+    </form>
+</body>
+</html>
