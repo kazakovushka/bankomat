@@ -1,5 +1,6 @@
 package ru.kazakovushka.edu.bankomat;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@Slf4j
 public class CardController {
     @Autowired
     CardRepository cardRepository;
@@ -22,9 +24,14 @@ public class CardController {
     @PostMapping(value = "/getCard")
     public String getCardNum(@RequestParam(name = "number") String number, Model model) {
         Card card = cardRepository.findByNumber(number);
-        model.addAttribute("card", card);
-        System.out.println("load card" + card);
-        return "pin";
+        if (card != null) {
+            model.addAttribute("card", card);
+            log.info("load card" + card);
+            return "pin";
+        } else {
+            log.warn("no card with number {}", number);
+            return "mainMenu";
+        }
     }
 
     @GetMapping(value = "/main")
@@ -35,7 +42,7 @@ public class CardController {
     @PostMapping(value = "/operations")
     public String getOperations(@ModelAttribute Card card, Model model) {
         model.addAttribute("card", card);
-        System.out.println("operations for card" + card);
+        log.info("model card = {}", model.getAttribute("card"));
         return "operations";
     }
 

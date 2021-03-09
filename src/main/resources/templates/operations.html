@@ -6,7 +6,7 @@
     <title>Bankomat</title>
 </head>
 <body>
-   <form action="#"  th:object="${card}"  method="post" th:action="@{/operation}">
+   <form action="#" th:object="${card}" method="post" th:action="@{/operation}">
        <span >Выберите операцию</span>
        <button type="submit" name="action" value="balance">посмотреть баланс</button>
         <button type="submit" name="action" value="takeMoney">снятие наличных</button>
